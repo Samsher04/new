@@ -225,11 +225,19 @@
           flex-direction: column;
           align-items: center;
           justify-content: flex-start;
-          padding: 4rem 1.2rem 2rem;
+          padding: 30px 25px !important;
+          padding-top: 100px !important;
           gap: 1rem;
-          text-align: center;
+          /* text-align: center; */
         }
 
+        .hero-name{
+          font-size: 30px !important;
+        }
+
+        .hero-title{
+          font-size: 14px !important;
+        }
         /* IMPORTANT: sab flow me aayega */
         .hero-right {
           order: 1;
@@ -251,6 +259,8 @@
         .hero-name {
           font-size: 2.4rem;
           margin: 0.3rem 0;
+          display: flex;
+          gap: 10px;
         }
 
         .hero-title {
@@ -259,20 +269,20 @@
         }
 
         .hero-desc {
-          font-size: 0.9rem;
+          font-size: 14px !important;
           line-height: 1.5;
+          margin-bottom: 0px !important;
         }
 
-        .hero-btns {
-          justify-content: center;
-          flex-wrap: wrap;
-          margin-top: 1rem;
-        }
+     
 
         .hero-stats {
           justify-content: center;
           gap: 1.2rem;
-          margin-top: 1rem;
+          margin-top: 0.5rem !important;
+        }
+        .stat-num{
+          font-size: 25px !important;
         }
       }
 
@@ -1168,7 +1178,7 @@
       /* Responsive */
       @media (max-width: 1024px) {
         nav {
-          padding: 1rem 2rem;
+          padding: 20px 22px;
         }
         #hero {
           padding: 0 3rem;
@@ -1180,6 +1190,13 @@
         /* .hero-right {
           display: none;
         } */
+
+           .hero-btns {
+          justify-content: center;
+          flex-wrap: wrap;
+          margin-top: 1rem;
+          display: none;
+        }
         section {
           padding: 3rem 1.5rem;
         }
@@ -1202,6 +1219,10 @@
       @media (max-width: 768px) {
         #projects {
           padding: 4rem 1.2rem;
+        }
+
+        .scroll-indicator{
+          display: none !important;
         }
 
         .section-header {
@@ -1522,7 +1543,7 @@
 
     <!-- NAV -->
     <nav>
-      <div class="nav-logo glitch">DEV.PORTFOLIO</div>
+      <div class="nav-logo glitch">PORTFOLIO</div>
       <ul class="nav-links">
         <li><a href="#about">About</a></li>
         <li><a href="#skills">Skills</a></li>
@@ -1591,7 +1612,7 @@
         <div class="corner-deco tr"></div>
         <div class="section-header">
           <span class="section-tag">About Me</span>
-          <h2 class="section-title">Who Am <span>I?</span></h2>
+         <h2 class="section-title">Who Am <span>I</span>?</h2>
         </div>
         <div class="about-grid">
           <div class="about-text">
@@ -2091,7 +2112,7 @@
     </main>
 
     <footer>
-      <div class="footer-logo">DEV.PORTFOLIO</div>
+      <div class="footer-logo">PORTFOLIO</div>
       <div class="footer-text">
         © 2025 // BUILT WITH MERN STACK // ALL RIGHTS RESERVED
       </div>
