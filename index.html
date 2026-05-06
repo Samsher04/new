@@ -2247,6 +2247,72 @@
     </div>
 
     <script>
+      async function handleSubmit() {
+        const btn = document.querySelector(".btn-submit");
+
+        // Form values lo
+        const name = document.querySelectorAll(".form-input")[0].value.trim();
+        const email = document.querySelectorAll(".form-input")[1].value.trim();
+        const subject = document
+          .querySelectorAll(".form-input")[2]
+          .value.trim();
+        const message = document.querySelector(".form-textarea").value.trim();
+
+        // Basic check
+        if (!name || !email || !message) {
+          btn.innerHTML =
+            '<i class="fa-solid fa-triangle-exclamation"></i> Saare fields bharo!';
+          btn.style.color = "var(--neon-pink)";
+          btn.style.borderColor = "var(--neon-pink)";
+          setTimeout(() => {
+            btn.innerHTML =
+              '<i class="fa-solid fa-paper-plane"></i> Send Message';
+            btn.style.color = "";
+            btn.style.borderColor = "";
+          }, 2000);
+          return;
+        }
+
+        // Loading state
+        btn.innerHTML =
+          '<i class="fa-solid fa-spinner fa-spin"></i> Sending...';
+        btn.style.color = "var(--neon-blue)";
+        btn.style.borderColor = "var(--neon-blue)";
+        btn.disabled = true;
+
+        try {
+          const res = await fetch("https://my-site-backend-eight.vercel.app/api/contact", {
+
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ name, email, subject, message }),
+          });
+
+          const data = await res.json();
+
+          if (data.success) {
+            btn.innerHTML = '<i class="fa-solid fa-check"></i> Message Sent!';
+            btn.style.background = "rgba(0,255,136,0.1)";
+            btn.style.color = "var(--neon-green)";
+            btn.style.borderColor = "var(--neon-green)";
+
+            // Form clear karo
+            document
+              .querySelectorAll(".form-input")
+              .forEach((i) => (i.value = ""));
+            document.querySelector(".form-textarea").value = "";
+          } else {
+            throw new Error(data.error);
+          }
+        } catch (err) {
+          btn.innerHTML =
+            '<i class="fa-solid fa-xmark"></i> Failed — Try Again';
+          btn.style.color = "var(--neon-pink)";
+          btn.style.borderColor = "var(--neon-pink)";
+          btn.disabled = false;
+        }
+      }
+
       // Custom Cursor
       const cursor = document.getElementById("cursor"),
         ring = document.getElementById("cursorRing");
@@ -2441,20 +2507,7 @@
         });
       });
 
-      // Form
-      function handleSubmit() {
-        const btn = document.querySelector(".btn-submit");
-        btn.innerHTML =
-          '<i class="fa-solid fa-spinner fa-spin"></i> Sending...';
-        btn.style.color = "var(--neon-blue)";
-        btn.style.borderColor = "var(--neon-blue)";
-        setTimeout(() => {
-          btn.innerHTML = '<i class="fa-solid fa-check"></i> Message Sent!';
-          btn.style.background = "rgba(0,255,136,0.1)";
-          btn.style.color = "var(--neon-green)";
-          btn.style.borderColor = "var(--neon-green)";
-        }, 1500);
-      }
+   
 
       // Smooth scroll
       document.querySelectorAll('a[href^="#"]').forEach((a) => {
